@@ -40,11 +40,20 @@ URL: https://code.google.com/p/io-2012-slides
       <h2>Qu'est-ce qu'un Framework Web ?</h2>
     </hgroup>
     <article>
-    A framework is not an absolute necessity, but nonetheless it is very useful.
-
-    A framework is a pledge of quality, upgradability and maintainability of applications at lower cost.
-
-    Applications developed using a framework are interoperable with market standards.
+    <ul>
+      <li>Un « cadre de travail » destiné au développeurs.</li>
+      <li>Se concentrer sur l'essentiel: l'application.</li>
+      <li>Adopter une structure fiable et des conventions de codes connues.</li>
+      <li>Utiliser un framework, c’est éviter de réinventer la roue.</li>
+    </ul>
+    <b><h3>Attention: ce n'est pas un générateur de code !</h3></b>
+    <pre class="prettyprint" data-lang="php">
+      $framework != $cms;
+    </pre>
+    <p>
+      Voyez l'apprentissage d'un framework comme un <b>investissement</b> : il y a un certain
+<b>effort</b> à fournir au début, mais les résultats se portent sur le <b>long terme</b> !
+    </p>
     </article>
   </slide>
 
@@ -54,21 +63,23 @@ URL: https://code.google.com/p/io-2012-slides
     </hgroup>
     <article>
       <ul>
-        <li>Symfony is a framework, a set of tools and a development methodology.</li>
+        <li>Une grande réputation.</li>
+        <li>Très utilisé dans le milieu des entreprises.</li>
         <li>Symfony is also a Philosophy and a Community.</li>
+        frameworks sont destinés à des développeurs confirmés.
       </ul>
+      <h2>Ils l'utilisent:</h2>
     </article>
   </slide>
 
   <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/symfony_128.png"></aside>
     <article class="flexbox vleft auto-fadein">
       <q>
         Symfony is a PHP Framework, a Philosophy, and a Community - all working together in harmony.
       </q>
       <div class="author">
         SensioLabs<br>
-        Créateurs de Symfony
+        Initiateurs de Symfony
       </div>
     </article>
   </slide>
@@ -76,46 +87,83 @@ URL: https://code.google.com/p/io-2012-slides
 
   <slide>
     <hgroup>
-      <h2>Slide with Bullets</h2>
+      <h2>Programme</h2>
     </hgroup>
     <article>
       <ul>
-        <li>Titles are formatted as Open Sans with bold applied and font size is set at 45</li>
-        <li>Title capitalization is title case
+        <li><b>Découvrir Symfony 2</b>
           <ul>
-            <li>Subtitle capitalization is title case</li>
+            <li>Présentation générale du framework et des outils</li>
+            <li>Installation de la distribution standard</li>
+            <li>Architecture d’un projet Symfony2</li>
+            <li>Traitement d’une requête HTTP avec Symfony2</li>
+            <li>Comprendre la notion d’environnement</li>
+            <li>Conventions de codage</li>
           </ul>
         </li>
-        <li>Subtitle capitalization is title case</li>
-        <li>Titles and subtitles should never have a period at the end</li>
+        <li><b>Configurer une application</b>
+          <ul>
+            <li>Comparatif des formats supportés : XML, YAML et PHP</li>
+            <li>Configuration globale de l’application</li>
+            <li>Configuration des URLs</li>
+          </ul>
+        </li>
+        <li><b>Pratique: un HelloWorld avec Symfony.</b></li>
       </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Bullets that Build</h2>
-      <h3>Subtitle Placeholder</h3>
+      <h2>Présentation générale du framework</h2>
+      <h3>Installation de Symfony</h3>
     </hgroup>
     <article>
-      <p>A list where items build:</p>
-      <ul class="build">
-        <li>Pressing 'h' highlights code snippets</li>
-        <li>Pressing 'p' toggles speaker notes (if they're on the current slide)</li>
-        <li>Pressing 'f' toggles fullscreen viewing</li>
-        <li>Pressing 'w' toggles widescreen</li>
-        <li>Pressing 'o' toggles overview mode</li>
-        <li>Pressing 'ESC' toggles off these goodies</li>
+      <ul>
+        <li><a href="http://symfony.com/download">http://symfony.com/download</a>, choisissez la version "without vendors".</li>
+        <li>Dans le dossier téléchargé, éxécutez la commande suivante pour installer les vendors:
+          <pre class="prettyprint">php composer.phar install</pre>
+        </li>
       </ul>
-      <p>Another list, but items fade as they build:</p>
-      <ul class="build fade">
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
-        <li>Hover over me!</li>
+      <p>Une autre solution utilisant uniquement <a href="http://getcomposer.org/">composer</a></p>
+      <ul>
+        <pre class="prettyprint">curl -s https://getcomposer.org/installer | php
+php composer.phar create-project symfony/framework-standard-edition path/ 2.1.7</pre>
       </ul>
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Présentation générale du framework</h2>
+      <h3>Vérifier la configuration</h3>
+    </hgroup>
+    <article>
+    <ul>
+      <li>En ligne de commande: </li>
+      <pre class="prettyprint">php app/check.php</pre>
+      <li>Depuis un navigateur: </li>
+      <pre class="prettyprint">http://localhost/path/to/symfony/app/web/config.php</pre>
+    </ul>
+    </article>
+  </slide>
+
+
+ <slide>
+    <hgroup>
+      <h2>Présentation générale du framework</h2>
+      <h3>Résolution des problèmes classiques</h3>
+    </hgroup>
+    <article>
+    <ul>
+      <li>Vérifier que php >= 5.3.3</li>
+      <pre class="prettyprint">php -v</pre>
+      <li>Ajouter les droits d'écriture sous Linux.</li>
+      <pre class="prettyprint">chmod 777 app/cache
+chmod 777 app/logs</pre>
+    </ul>
+    </article>
+  </slide>
   <slide>
     <hgroup>
       <h2>Slide with (Smaller Font)</h2>
