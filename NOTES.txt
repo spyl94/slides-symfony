@@ -1,0 +1,208 @@
+Bonjour à tous nous allons débuter une courte initiation débutant au Framework PHP Symfony2,
+Avant tout je voudrais me présenter, je suis Aurélien David étudiant en 3ème année d'école d'ingénieurs je suis développeurs Web depuis 4 ans et après avoir réalisé plusieurs site web "from scratch" j'ai commencé à utiliser le Framework Symfony à la sortie de sa version 2.0.
+
+Durant la présentation vous n'êtes pas obligé de prendre des notes, à la fin je vais vous donner une url pour télécharger les slides.
+Enfin si vous avez des questions, vous pouvez naturellement m'interrompre à la fin de chaqun des slides.
+
+## Qu'est-ce qu'un Framework Web ?
+
+Certains d'entre vous ont ils déjà utilisé un FrameWork ?
+
+« cadre de travail »
+   permet au dev de se concentrer sur l'essentiel: l'application
+   une structure => des Design Pattern => bien organiser votre code avec de bonnes pratiques (Pattern MVC)
+   qui vous évite de réinventer la roue, et surtout qui vous permet d'utiliser des briques puissantes et éprouvée.
+   Recoder un espace membre sur chacun des sites ?
+
+    D'autre part, un framework a une structure et des conventions de codes connues. Ainsi vous pouvez facilement recruter un autre développeur : s'il connait déjà le framework en question, il s'intègrera très rapidement au projet.
+
+    Attention: un framework, c’est un ensemble de composants, ce n’est PAS un générateur de code, à ne pas confondre avec un CMS (Désolé, Symfony ne fera pas le travail à votre place !).
+
+ Un gage de qualité, de mise à jours et de maintenance d'application à moindre coût.
+
+    Un FrameWork n'est jamais un nécéssité malgré tout il s'avert bien utile.
+
+    Mais, rien de tout cela ne doit vous effrayer ! Voyez l'apprentissage d'un framework comme un investissement : il y a un certain
+effort à fournir au début, mais les résultats se récoltent ensuite sur le long terme !
+
+## Pourquoi choisir Symfony2 ?
+
+        <li>Une grande réputation.</li>
+        <li>Très utilisé dans le milieu des entreprises.</li>
+        <li>Framework destiné à des développeurs confirmés.</li>
+  
+Une citation des créateurs:
+        Symfony is a PHP Framework, a Philosophy, and a Community - all working together in harmony.
+        SensioLabs
+        Initiateurs de Symfony
+ 
+
+
+      <h2>Programme</h2>
+        <li><b>Découvrir Symfony 2</b>
+          <ul>
+            <li>Présentation générale du framework et des outils</li>
+            <li>Installation de la distribution standard</li>
+            <li>Architecture d’un projet Symfony2</li>
+            <!--<li>Traitement d’une requête HTTP avec Symfony2</li>-->
+            <li>Comprendre la notion d’environnement</li>
+			<li>Le système de Bundles</li>
+            <li>Conventions de codage</li>
+          </ul>
+        </li>
+        <li><b>Pratique: un HelloWorld avec Symfony.</b></li>
+
+      <h2>Présentation générale du framework</h2>
+      <h3>Installation de Symfony</h3>
+        <li><a href="http://symfony.com/download">http://symfony.com/download</a>, choisissez la version "without vendors".</li>
+        <li>Dans le dossier téléchargé, éxécutez la commande suivante pour installer les vendors:
+          <pre class="prettyprint">php composer.phar install</pre>
+        </li>
+      </ul>
+      <p>Une autre solution utilisant uniquement <a href="http://getcomposer.org/">composer</a></p>
+      <ul>
+        <pre class="prettyprint">curl -s <span class="nocode">https://getcomposer.org/installer</span> | php
+php composer.phar create-project symfony/framework-standard-edition path/ 2.1.7</pre>
+      </ul>
+
+      <li>En ligne de commande: </li>
+      <pre class="prettyprint">php app/check.php</pre>
+      <li>Depuis un navigateur: </li>
+      <pre class="prettyprint"><span class="nocode">http://localhost/path/to/symfony/app/web/config.php</span></pre>
+
+      <h3>Résolution des problèmes classiques</h3>
+      <li>Vérifier que php >= 5.3.3</li>
+      <pre class="prettyprint">php -v</pre>
+      <li>Ajouter les droits d'écriture sous Linux.</li>
+      <pre class="prettyprint">chmod 777 app/cache
+chmod 777 app/logs</pre>
+
+
+      <h3>Architecture d’un projet Symfony2</h3>
+      <li><b>Le répertoire /app "application" </b><br>
+      Configuration, sécurité, cache, logs... pas de code</li><br>
+      <li><b>Le répertoire /src "source" </b><br>
+    Contient le code source de l'application découpé en "bundles"</li><br>
+    <li><b>Le répertoire /vendor "bibliothèques externes" </b><br>
+    Géré par composer: à ne pas modifier</li><br>
+    <li><b>Le répertoire /web "public" </b><br>
+    Les fichiers destinés à vos visiteurs</li>
+    </ul>
+
+   <h3>Comprendre la notion d’environnement</h3>
+      <li><b>L'environnement dev "développement"</b><br>
+      En cas d'erreur, affiche tous les détails pour déboguer.</li><br>
+      <li><b>L'environnement prod "production"</b><br>
+    Site plus rapide à charger, qui n'affiche pas le détails des erreurs.</li><br>
+    <li><b>L'environnement test</b><br>
+    Pour éxécuter les tests unitaires.</li>
+    <p><b>Comment les différencier ?</b></p>
+    <pre class="prettyprint"><span class="nocode">http://localhost/app.php      -> environnement prod
+http://localhost/app_dev.php  -> environnement dev</span></pre>
+    <p>Ces deux contrôleurs frontaux sont fournis par Symfony2 et prêts à l'emploi.</p>
+  
+      <h3>Architecture MVC</h3>
+		<li><b>Le Contrôleur (ou Controller):</b><br><br>
+		La couche qui se charge d'analyser et de traiter la requête de l'utilisateur. <br>C'est la <b>logique</b> de notre site internet.
+		</li>
+		<li><b>Le Modèle (ou Model) :</b><br><br>
+		Son rôle est de gérer vos <b>données</b> et votre contenu.
+		</li>
+		<li><b>La Vue (ou View) :</b><br><br>
+		Son rôle est d'<b>afficher</b> les pages.
+		</li>
+ 
+    <h3>Le Système de Bundles</h3>
+    <h3>Avec Symfony: <b>tout est Bundle !</b></h3>
+    <h3>Un bundle est un ensemble structuré de fichiers au sein d'un répertoire.</h3>
+	<pre class="prettyprint">// src/Acme/TestBundle/AcmeTestBundle.php
+namespace Acme\TestBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class AcmeTestBundle extends Bundle {}</pre>
+	<p>Une application est faite de bundles qui sont définis dans la méthode <b>registerBundles()</b> de la classe <b>AppKernel</b>.</p>
+	<p>Un site regroupe les Bundles tiers: <a href="http://knpbundles.com/">knpbundles.com</a></p>	
+
+      <h3>Convention de codage</h3>
+    <h3><b>Nommer un Bundle:</b></h3>
+    <ul>
+      <li>Utiliser uniquement des <b>caractères alphanumériques</b> et des tirets bas (underscore).</li>
+      <li>Utiliser un nom en notation dite « <b>CamelCase</b> ».</li>
+      <li>Utiliser un nom court et descriptif (pas plus de 2 mots).</li>
+      <li><b>Suffixer le nom avec Bundle</b>.</li>
+    </ul>
+    <h3><b>Exemples:</b></h3>
+    <p>FOSUserBundle, EfforDemoBundle, EfforAdminBundle...</p>
+
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Les différentes étapes</h3>
+    <h3>Avant de coder : <b>créer un Bundle</b></h3>
+    <p>C'est lui qui va contenir nos sources, appelons le <b>EfforDemoBundle</b>.</p><br>
+    <ul>
+      <li><b>Ajouter une route:</b><br><br>
+      C'est l'url de notre page, exemple: /hello</li><br>
+      <li><b>Associer à la route un contrôleur :</b><br><br>
+      Une fonction PHP qui va traiter la requête HTTP, puis la transformer en objet Response qui sera retourné à l'utilisateur.</li><br>
+    </ul>
+    <h3>Créer un Bundle</h3>
+    <pre class="prettyprint">php app/console generate:bundle --namespace=Effor/DemoBundle --format=yml
+    </pre>
+    <p>Un répertoire <b>src/Effor/DemoBundle</b> est créé pour le bundle.</p>
+    <p>Le bundle est automatiquement définie dans <b>AppKernel.php</b></p>
+     <pre class="prettyprint" data-lang="php">// app/AppKernel.php
+public function registerBundles() {
+    $bundles = array(
+        // ...
+        new Effor\DemoBundle\EfforDemoBundle(),
+    ); // ....
+}</pre>
+    <h3>Créer la route</h3>
+    <p>Après génération du bundle, le fichier de routing est automatiquement importé:</p>
+    <pre class="prettyprint" data-lang="yml"># app/config/routing.yml
+ effor_demo:
+     resource: "@EfforDemoBundle/Resources/config/routing.yml"
+     prefix:   /</pre>
+     <p>Ajoutons la nouvelle route qui définit l'URL de la page que nous allons créer :</p>
+ <pre class="prettyprint" data-lang="yml"># src/Effor/DemoBundle/Resources/config/routing.yml
+hello:
+    pattern:  /hello/
+    defaults: { _controller: EfforDemoBundle:Hello:index }</pre>
+    <h3>Créer le controller</h3>
+    <p>Créons la méthode indexAction que Symfony exécutera lorsque la route hello sera identifiée :</p>
+ <pre class="prettyprint" data-lang="php"> // src/Effor/DemoBundle/Controller/HelloController.php
+namespace Effor\DemoBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+class HelloController
+{
+    public function indexAction()
+    {
+        return new Response('<html><body>Hello World!</body></html>');
+    }
+}</pre>
+    <h3>Encore plus fort : une salutation personnalisée ! (1/2)</h3>
+    <pre class="prettyprint"><span class="nocode">http://localhost/app_dev.php/hello/Symfony</span> //affiche Hello Symfony!
+<span class="nocode">http://localhost/app_dev.php/hello/Effor</span>   //affiche Hello Effor!</pre>
+<p>Le paramètre {name} correspond à nimporte quelle route: /hello/*</p>
+ <pre class="prettyprint" data-lang="yml"># src/Effor/DemoBundle/Resources/config/routing.yml
+hello:
+    pattern:  /hello/{name}
+    defaults: { _controller: EfforDemoBundle:Hello:index }</pre>
+    <p>Voyons maintenant comment récupèrer {name} dans notre controlleur...</p>
+    
+	<h3>Encore plus fort : une salutation personnalisée ! (2/2)</h3>
+ <pre class="prettyprint" data-lang="php"> // src/Effor/DemoBundle/Controller/HelloController.php
+namespace Effor\DemoBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+class HelloController
+{
+    public function indexAction($name)
+    {
+        return new Response('<html><body>Hello '.$name.'!</body></html>');
+    }
+}</pre>
+    <p>Vérifions cela avec une petite demonstration !</p>

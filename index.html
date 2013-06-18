@@ -1,4 +1,10 @@
 <!--
+Symfony2 Formation Slides
+
+Author: Aurélien David <spyl94@gmail.com>
+
+Based on:
+
 Google IO 2012 HTML5 Slide Template
 
 Authors: Eric Bidelman <ebidel@gmail.com>
@@ -65,10 +71,11 @@ URL: https://code.google.com/p/io-2012-slides
       <ul>
         <li>Une grande réputation.</li>
         <li>Très utilisé dans le milieu des entreprises.</li>
-        <li>Symfony is also a Philosophy and a Community.</li>
-        frameworks sont destinés à des développeurs confirmés.
+        <li>Framework destiné à des développeurs confirmés.</li>
       </ul>
-      <h2>Ils l'utilisent:</h2>
+      <h2>Ils l'utilisent:</h2> <br>
+      <img src="images/dailymotionbig.png" alt="">   <img src="images/250px-Delicious_logo.svg.png" alt=""> <img src="images/logo_v4_final_(1).png" alt=""><br><br>
+      http://trac.symfony-project.org/wiki/ApplicationsDevelopedWithSymfony
     </article>
   </slide>
 
@@ -84,10 +91,9 @@ URL: https://code.google.com/p/io-2012-slides
     </article>
   </slide>
 
-
   <slide>
     <hgroup>
-      <h2>Programme</h2>
+      <h2>Programme 1/3</h2>
     </hgroup>
     <article>
       <ul>
@@ -98,9 +104,11 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Architecture d’un projet Symfony2</li>
             <li>Traitement d’une requête HTTP avec Symfony2</li>
             <li>Comprendre la notion d’environnement</li>
+			      <li>Le système de Bundles</li>
             <li>Conventions de codage</li>
           </ul>
         </li>
+        <li><b>Pratique: un HelloWorld avec Symfony</b></li>
         <li><b>Configurer une application</b>
           <ul>
             <li>Comparatif des formats supportés : XML, YAML et PHP</li>
@@ -108,7 +116,68 @@ URL: https://code.google.com/p/io-2012-slides
             <li>Configuration des URLs</li>
           </ul>
         </li>
-        <li><b>Pratique: un HelloWorld avec Symfony.</b></li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Programme 2/3</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Les contrôleurs</b><ul>
+        <li>Utiliser les annotations @Route et @Method</li>
+        <li>Les Tâches Communes du Contrôleur</li>
+        </ul></li>
+        <li><b>Pratique: un espace membre avec FOSUserBundle</b>
+        <ul>
+          <li>Installation du Bundle</li>
+          <li>Configuration du Bundle</li>
+        </ul>
+        </li>
+        <li><b>Le templating avec Symfony</b>
+          <ul>
+            <li>Présentation de Twig</li>
+            <li>Passer des paramètres à la vue</li>
+            <li>Utiliser des variables globales</li>
+            <li>Construire un composant ré-utilisable dans tous les modules</li>
+          </ul>
+        </li>
+        <li><b>Pratique: réalisations des templates</b>
+        <ul>
+          <li>Apparence générale</li>
+          <li>Personnalisation esthétique de FOSUserBundle</li>
+        </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+      <h2>Programme 3/3</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>Interagir avec la bases de données</b>
+          <ul>
+            <li>Présentation de Doctrine</li>
+            <li>Connecter une application à une base de données</li>
+            <li>Créer une entité et générer un modèle objet</li>
+            <li>Récupérer et manipuler les entités</li>
+            <li>Relations et associations entre les entités</li>
+            <li>Gestion des formulaires</li>
+          </ul>
+        </li>
+        <li><b>Pratique: modélisation d'un blog</b></li>
+        <li><b>Aller plus loin avec Symfony</b>
+          <ul>
+            <li>Installer Symfony sur un serveur de production</li>
+            <li>Personnaliser la page 404 et les autres pages d'erreur</li>
+            <li>Comment utiliser Assetic pour gérer vos ressources</li>
+          </ul>
+        </li>
       </ul>
     </article>
   </slide>
@@ -127,7 +196,7 @@ URL: https://code.google.com/p/io-2012-slides
       </ul>
       <p>Une autre solution utilisant uniquement <a href="http://getcomposer.org/">composer</a></p>
       <ul>
-        <pre class="prettyprint">curl -s https://getcomposer.org/installer | php
+        <pre class="prettyprint">curl -s <span class="nocode">https://getcomposer.org/installer</span> | php
 php composer.phar create-project symfony/framework-standard-edition path/ 2.1.7</pre>
       </ul>
     </article>
@@ -143,11 +212,10 @@ php composer.phar create-project symfony/framework-standard-edition path/ 2.1.7<
       <li>En ligne de commande: </li>
       <pre class="prettyprint">php app/check.php</pre>
       <li>Depuis un navigateur: </li>
-      <pre class="prettyprint">http://localhost/path/to/symfony/app/web/config.php</pre>
+      <pre class="prettyprint"><span class="nocode">http://localhost/path/to/symfony/app/web/config.php</span></pre>
     </ul>
     </article>
   </slide>
-
 
  <slide>
     <hgroup>
@@ -164,161 +232,1164 @@ chmod 777 app/logs</pre>
     </ul>
     </article>
   </slide>
+
   <slide>
     <hgroup>
-      <h2>Slide with (Smaller Font)</h2>
+    <h2>Présentation générale du framework</h2>
+      <h3>Architecture d’un projet Symfony2</h3>
     </hgroup>
-    <article class="smaller">
-      <ul>
-        <li>All <a href="http://google.com">links</a> open in new tabs.</li>
-        <li>To change that this, add <code>target="_self"</code> to the link.</li>
-      </ul>
+    <article>
+    <ul>
+      <li><b>Le répertoire /app "application" </b><br>
+      Configuration, sécurité, cache, logs... pas de code</li><br>
+      <li><b>Le répertoire /src "source" </b><br>
+    Contient le code source de l'application découpé en "bundles"</li><br>
+    <li><b>Le répertoire /vendor "bibliothèques externes" </b><br>
+    Géré par composer: à ne pas modifier</li><br>
+    <li><b>Le répertoire /web "public" </b><br>
+    Les fichiers destinés à vos visiteurs</li>
+    </ul>
+    <img src="images/architecture.png" style="float: right;margin-top: -350px;"  alt="">
     </article>
   </slide>
 
-  <slide hidden>
-    Hidden slides are left out of the presentation.
+  <slide>
+    <hgroup>
+    <h2>Présentation générale du framework</h2>
+      <h3>Comprendre la notion d’environnement</h3>
+    </hgroup>
+    <article>
+    <ul>
+      <li><b>L'environnement dev "développement"</b><br>
+      En cas d'erreur, affiche tous les détails pour déboguer.</li><br>
+      <li><b>L'environnement prod "production"</b><br>
+    Site plus rapide à charger, qui n'affiche pas le détails des erreurs.</li><br>
+    <li><b>L'environnement test</b><br>
+    Pour éxécuter les tests unitaires.</li>
+    </ul>
+    <p><b>Comment les différencier ?</b></p>
+    <pre class="prettyprint"><span class="nocode">http://localhost/app.php      -> environnement prod
+http://localhost/app_dev.php  -> environnement dev</span></pre>
+    <p>Ces deux contrôleurs frontaux sont fournis par Symfony2 et prêts à l'emploi.</p>
+    </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Code Slide (with Subtitle Placeholder)</h2>
-      <h3>Subtitle Placeholder</h3>
+    <h2>Présentation générale du framework</h2>
+      <h3>Architecture MVC</h3>
+    </hgroup>
+	<ul>
+		<li><b>Le Contrôleur (ou Controller):</b><br><br>
+		La couche qui se charge d'analyser et de traiter la requête de l'utilisateur. <br>C'est la <b>logique</b> de notre site internet.
+		</li>
+		<li><b>Le Modèle (ou Model) :</b><br><br>
+		Son rôle est de gérer vos <b>données</b> et votre contenu.
+		</li>
+		<li><b>La Vue (ou View) :</b><br><br>
+		Son rôle est d'<b>afficher</b> les pages.
+		</li>
+		</ul>
+  <img src="images/evolution.png" style="float: right;margin-top: -150px;" alt="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup><h2>Traitement d’une requête HTTP avec Symfony2</h2></hgroup>
+    <article>
+    <img src="images/request-flow.png" alt="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Présentation générale du framework</h2>
+      <h3>Le Système de Bundles</h3>
     </hgroup>
     <article>
-      <p>Press 'h' to highlight important sections of code (wrapped in <code>&lt;b&gt;</code>).</p>
-      <pre class="prettyprint" data-lang="javascript">
-&lt;script type='text/javascript'&gt;
-  // Say hello world until the user starts questioning
-  // the meaningfulness of their existence.
-  function helloWorld(world) {
-    <b>for (var i = 42; --i &gt;= 0;) {
-      alert('Hello ' + String(world));
-    }</b>
+    <h3>Avec Symfony: <b>tout est Bundle !</b> (le framework est lui même en est un)</h3>
+    <h3>Un bundle est <b>un ensemble structuré de fichiers</b> au sein d'un répertoire.</h3>
+	<pre class="prettyprint">// src/Acme/TestBundle/AcmeTestBundle.php
+namespace Acme\TestBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class AcmeTestBundle extends Bundle {}</pre>
+	<p>Une application est faite de bundles qui sont définis dans la méthode <b>registerBundles()</b> de la classe <b>AppKernel</b>.</p>
+	<p>Un site regroupe les Bundles tiers: <a href="http://knpbundles.com/">knpbundles.com</a></p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Présentation générale du framework</h2>
+      <h3>Structure d'un Bundle</h3>
+    </hgroup>
+    <article class="smaller">
+    <table>
+        <tr>
+          <th>Type</th><th>Répertoire</th>
+        </tr>
+        <tr>
+          <td>Commandes</td><td> Command/</td>
+        </tr>
+        <tr>
+          <td>Contrôleurs</td><td class="highlight">Controller/</td>
+        </tr>
+        <tr>
+          <td>Extensions du Conteneur de Services</td><td>DependencyInjection/</td>
+        </tr>
+        <tr>
+          <td>Listeners d'Évènements</td><td>EventListener/</td>
+        </tr>
+        <tr>
+          <td>Configuration</td><td class="highlight">Resources/config/</td>
+        </tr>
+        <tr>
+          <td>Ressources Web</td><td class="highlight">Resources/public/</td>
+        </tr>
+        <tr>
+          <td>Fichiers de traduction</td><td>Resources/translations/</td>
+        </tr>
+        <tr>
+          <td>Templates</td><td class="highlight">Resources/views/</td>
+        </tr>
+          <tr>
+          <td>Tests Unitaires et Fonctionnels</td><td>Tests/</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Présentation générale du framework</h2>
+      <h3>Convention de codage</h3>
+    </hgroup>
+    <article>
+    <h3><b>Nommer un Bundle:</b></h3>
+    <ul>
+      <li>Utiliser uniquement des <b>caractères alphanumériques</b> et des tirets bas (underscore).</li>
+      <li>Utiliser un nom en notation dite « <b>CamelCase</b> ».</li>
+      <li>Utiliser un nom court et descriptif (pas plus de 2 mots).</li>
+      <li><b>Suffixer le nom avec Bundle</b>.</li>
+    </ul>
+    <h3><b>Exemples:</b></h3>
+    <p>FOSUserBundle, EfforDemoBundle, EfforAdminBundle...</p>
+    <img src="images/250px-CamelCase.svg.png" style="float: right;margin-top: -150px;" alt="">
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Les différentes étapes</h3>
+    </hgroup>
+    <article>
+    <h3>Avant de coder : <b>créer notre Bundle</b></h3>
+    <p>C'est lui qui va contenir nos sources, appelons le <b>EfforDemoBundle</b>.</p><br>
+    <ul>
+      <li><b>Ajouter une route:</b><br><br>
+      C'est l'url de notre page, exemple: /hello</li><br>
+      <li><b>Associer à la route un contrôleur :</b><br><br>
+      Une fonction PHP qui va traiter la requête HTTP, puis la transformer en objet Response qui sera retourné à l'utilisateur.</li><br>
+    </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Supprimer AcmeDemoBundle</h2>
+    </hgroup>
+    <article>
+    <ul>
+      <li>Supprimer le répertoire <b>src/Acme</b></li>
+      <li>Supprimer la ligne de chargement du bundle Acme dans <b>app/AppKernel.php</b>
+       <pre class="prettyprint">$bundles[] = new AcmeDemoBundleAcmeDemoBundle();</pre>
+      </li>
+      <li>Supprimez les 3 premières routes dans le fichier <b>routing_dev.yml</b>:</li>
+    </ul>
+     <pre class="prettyprint" data-lang="php">_welcome:
+    pattern:  /
+    defaults: { _controller: AcmeDemoBundle:Welcome:index }
+
+_demo_secured:
+    resource: "@AcmeDemoBundle/Controller/SecuredController.php"
+    type:     annotation
+_demo:
+    resource: "@AcmeDemoBundle/Controller/DemoController.php"
+    type:     annotation
+    prefix:   /demo</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Créer un Bundle</h3>
+    </hgroup>
+    <article>
+    <pre class="prettyprint">php app/console generate:bundle --namespace=Effor/DemoBundle --format=yml
+    </pre>
+
+    <p>Un répertoire <b>src/Effor/DemoBundle</b> est créé pour le bundle.</p>
+    <p>Le bundle est automatiquement définie dans <b>AppKernel.php</b></p>
+     <pre class="prettyprint" data-lang="php">// app/AppKernel.php
+public function registerBundles() {
+    $bundles = array(
+        // ...
+        new Effor\DemoBundle\EfforDemoBundle(),
+    ); // ....
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Créer la route</h3>
+    </hgroup>
+    <article>
+    <p>Après génération du bundle, le fichier de routing est automatiquement importé:</p>
+    <pre class="prettyprint" data-lang="yml"># app/config/routing.yml
+ effor_demo:
+     resource: "@EfforDemoBundle/Resources/config/routing.yml"
+     prefix:   /</pre>
+     <p>Ajoutons la nouvelle route qui définit l'URL de la page que nous allons créer :</p>
+ <pre class="prettyprint" data-lang="yml"># src/Effor/DemoBundle/Resources/config/routing.yml
+hello:
+    pattern:  /hello/
+    defaults: { _controller: EfforDemoBundle:Hello:index }</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Créer le controller</h3>
+    </hgroup>
+    <article>
+    <p>Créons la méthode indexAction que Symfony exécutera lorsque la route hello sera identifiée :</p>
+ <pre class="prettyprint" data-lang="php"> // src/Effor/DemoBundle/Controller/HelloController.php
+namespace Effor\DemoBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+class HelloController
+{
+    public function indexAction()
+    {
+        return new Response('<html><body>Hello World!</body></html>');
+    }
+}</pre>
+    </article>
+  </slide>
+
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Encore plus fort : une salutation personnalisée ! (1/2)</h3>
+    </hgroup>
+    <article>
+    <pre class="prettyprint"><span class="nocode">http://localhost/app_dev.php/hello/Symfony</span> //affiche Hello Symfony!
+<span class="nocode">http://localhost/app_dev.php/hello/Effor</span>   //affiche Hello Effor!</pre>
+<p>Le paramètre {name} correspond à nimporte quelle route: /hello/*</p>
+ <pre class="prettyprint" data-lang="yml"># src/Effor/DemoBundle/Resources/config/routing.yml
+hello:
+    pattern:  /hello/{name}
+    defaults: { _controller: EfforDemoBundle:Hello:index }</pre>
+    <p>Voyons maintenant comment récupèrer {name} dans notre controlleur...</p>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: un HelloWorld avec Symfony</h2>
+    <h3>Encore plus fort : une salutation personnalisée ! (2/2)</h3>
+    </hgroup>
+    <article>
+ <pre class="prettyprint" data-lang="php"> // src/Effor/DemoBundle/Controller/HelloController.php
+namespace Effor\DemoBundle\Controller;
+
+use Symfony\Component\HttpFoundation\Response;
+
+class HelloController
+{
+    public function indexAction($name)
+    {
+        return new Response('<html><body>Hello '.$name.'!</body></html>');
+    }
+}</pre>
+    <p>Vérifions cela avec une petite demonstration !</p>
+    </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Configurer une application</h2>
+      <h3>Comparatif des formats supportés : XML, YAML et PHP</h3>
+      </hgroup>
+    <article>
+    <ul>
+      <li><b>YAML</b>: Simple, propre et lisible;</li>
+      <li><b>XML</b>: Plus puissant et support de l'autocomplétion sur les IDE;</li>
+      <li><b>PHP</b>: Très puissant, mais moins lisible que les formats de configuration standards.</li>
+    </ul>
+    </article>
+    </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Configurer une application</h2>
+      <h3>Configuration globale de l’application</h3>
+      </hgroup>
+      <article>
+      <img src="images/configuration.png" style="float:right;margin-top:-180px;" alt="">
+      <pre class="prettyprint" data-lang="yml">parameters:
+    database_driver:   pdo_mysql
+    database_host:     127.0.0.1
+    database_port:     ~
+    database_name:     symfony
+    database_user:     root
+    database_password: ~
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    locale:            en
+    secret:            ThisTokenIsNotSoSecretChangeIt</pre>
+</article>
+    </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Configuration des URLs</h2>
+      <h3>Créer une route avec des paramètres par défaut</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="yml">blog:
+    pattern:   /blog/{page}
+    defaults:  { _controller: AcmeBlogBundle:Blog:index }</pre>
+    <pre class="prettyprint" data-lang="yml">blog:
+    pattern:   /blog/{page}
+    defaults:  { _controller: AcmeBlogBundle:Blog:index, page: 1 }</pre>
+    <table>
+        <tr>
+          <td>/blog</td><td>{page} = 1</td>
+        </tr>
+        <tr>
+          <td>/blog/1</td><td>{page} = 1</td>
+        </tr>
+        <tr>
+          <td>/blog/2</td><td>{page} = 2</td>
+        </tr>
+    </table>
+    </article>
+  </slide>
+
+
+    <slide>
+      <hgroup>
+      <h2>Configuration des URLs</h2>
+      <h3>Créer une route avec des contraintes</h3>
+      </hgroup>
+      <article>
+      <h3>Problème: comment s'assurer que { page } est un entier positif ?</h3>
+      <pre class="prettyprint" data-lang="yml">blog:
+    pattern:   /blog/{page}
+    defaults:  { _controller: AcmeBlogBundle:Blog:index, page: 1 }
+    requirements:
+        page:  \d+</pre>
+        <p>Vérifier qu'une { annee } possède 4 chiffre:</p>
+         <pre class="prettyprint" data-lang="yml">requirements:
+        page:  \d{4}</pre>
+        <h3>En résumé: on utilise les <b>expressions régulières</b> !</h3>
+     </article>
+  </slide>
+
+
+   <slide>
+      <hgroup>
+      <h2>Configuration des URLs</h2>
+      <h3>Créer une route avec des contraintes</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="yml">homepage:
+    pattern:   /{lang}
+    defaults:  { _controller: AcmeDemoBundle:Main:homepage, lang: fr }
+    requirements:
+        lang:  en|fr</pre>
+        <h3>Signifie « soit en, soit fr », par exemple 'es' ne sera pas interceptée.</h3>
+        <br>
+        <p>En réalité on utiliserait plutôt le paramètre {_locale} !</p>
+      </article>
+  </slide>
+
+     <slide>
+      <hgroup>
+      <h2>Configuration des URLs</h2>
+      <h3>Générer des URL</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">
+// src/Sdz/BlogBundle/Controller/BlogController.php
+
+class BlogController extends Controller
+{
+  public function indexAction()
+  {
+    $page = 5;
+    // On veut avoir l'URL de la page d'identidiant $page.
+    $url = $this->generateUrl('blog', array('page' => $page));
+    // $url vaut « /blog/5 »
+    // Pour une url absolue :
+    $url = $this->generateUrl('blog', array('page' => $page), true);
+    // http://monsite.com/blog/5
   }
-&lt;/script&gt;
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>L'annotation @Route associe un schéma de route à un contrôleur</h3>
+    </hgroup>
+    <article>
+ <pre class="prettyprint" data-lang="php">use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+
+class PostController extends Controller
+{
+    /**
+     * @Route("/")
+     */
+    public function indexAction()
+    {
+        // ...
+    }
+}</pre>
+<h3>Avec Symfony les commentaires sont également du code...</h3>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>Et le nom de la route ?</h3>
+    </hgroup>
+    <article>
+    <h3>Le nom par défaut de la route est: <b>Bundle</b>_<b>Controller</b>_<b>Action</b></h3> <br>
+    <p>Dans l'exemple précédent, le nom est <b>effor_demo_post_index</b></p>
+    <h3>Mais on peut également le changer en utilisant l'attribut <b>name</b>:</h3>
+ <pre class="prettyprint" data-lang="php">/**
+ * @Route("/", name="blog_home")
+ */
+public function indexAction()
+{
+    // ...
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>Comment importer nos routes ?</h3>
+    </hgroup>
+    <article>
+    <h3>Dans <b>app/config/routing.yml</b> :</h3>
+ <pre class="prettyprint" data-lang="yml"># importe les routes d'une classe Contrôleur
+post:
+    resource: "@EfforDemoBundle/Controller/HelloController.php"
+    type:     annotation</pre>
+    <h3>Lorsque l'on génère un Bundle avec le format annotation:</h3>
+     <pre class="prettyprint" data-lang="yml"># importe les routes d'un répertoire Controller
+blog:
+    resource: "@EfforDemoBundle/Controller"
+    type:     annotation</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>Comment spécifier les valeurs par défaut et obligatoires</h3>
+    </hgroup>
+    <article>
+ <pre class="prettyprint" data-lang="php">/**
+ * @Route("/{id}/{foo}", requirements={"id" = "\d+"}, defaults={"foo" = "bar"})
+ */
+public function showAction($id)
+{
+  // ...
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>Faire correspondre plusieurs URLs</h3>
+    </hgroup>
+    <article>
+ <pre class="prettyprint" data-lang="php">/**
+ * @Route("/", defaults={"id" = 1})
+ * @Route("/{id}")
+ */
+public function showAction($id)
+{
+  // ...
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser les annotations @Route et @Method</h2>
+    <h3>@Method pour spécifier les méthodes HTTP autorisées pour la route</h3>
+    </hgroup>
+    <article>
+ <pre class="prettyprint" data-lang="php">use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+
+/**
+ * @Route("/blog")
+ */
+class PostController extends Controller
+{
+    /**
+     * @Route("/edit/{id}")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction($id)
+    {}
+}</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Hériter la classe Controller de base</h3>
+    </hgroup>
+    <article>
+    <h3>Cela permet de <b>faciliter les tâches</b> les plus communes et rend l'<b>accès plus simple</b> aux ressources.</h3>
+<pre class="prettyprint" data-lang="php">// src/Effor/HelloBundle/Controller/HelloController.php
+namespace Effor\HelloBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+class HelloController extends Controller
+{
+    public function indexAction($name)
+    {
+        return new Response('<html><body>Hello '.$name.'!</body></html>');
+    }
+}
+</pre>
+    </article>
+  </slide>
+
+
+
+    <slide>
+    <hgroup>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Manipuler l'objet Request</h3>
+    </hgroup>
+    <article>
+     <pre class="prettyprint" data-lang="php">// Depuis un contrôleur
+$request = $this->getRequest();</pre>
+    <table>
+        <tr>
+          <th>Type de paramètres</th><th>Méthode Symfony2</th><th>Méthode traditionnelle</th><th>Exemple</th>
+        </tr>
+        <tr>
+          <td>Variables d'URL</td><td>$request->query</td><td>$_GET</td><td>$request->query->get('tag')</td>
+        </tr>
+        <tr>
+          <td>Variables de formulaire</td><td>$request->request</td><td>$_POST</td><td>$request->request->get('tag')</td>
+        </tr>
+         <tr>
+          <td>Variables de cookie</td><td>$request->cookies</td><td>$_COOKIE</td><td>$request->cookies->get('tag')</td>
+        </tr>
+         <tr>
+          <td>Variables de serveur</td><td>$request->server</td><td>$_SERVER</td><td>$request->server->get('REQUEST_URI')</td>
+        </tr>
+         <tr>
+          <td>Variables d'entête</td><td>$request->headers</td><td>$_SERVER['HTTP_*']</td><td>$request->headers->get('USER_AGENT')</td>
+        </tr>
+      </table>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Manipuler l'objet Request</h3>
+    </hgroup>
+    <article>
+    <h3>Deux méthodes très utiles :</h3>
+        <pre class="prettyprint" data-lang="php">if( $request->getMethod() == 'POST' )
+{
+  // Un formulaire a été envoyé, on peut le traiter ici
+}
+</pre>
+<pre class="prettyprint" data-lang="php">
+if( $request->isXmlHttpRequest() )
+{
+  // C'est une requête AJAX, retournons du JSON, par exemple
+}
+</pre>
+Pour en savoir plus : <a href="http://api.symfony.com/2.2/Symfony/Component/HttpFoundation/Request.html">l'API complète de la classe</a>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Rediriger</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="php">public function indexAction()
+{
+    return $this->redirect($this->generateUrl('homepage'), 301);
+}
+</pre>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Gérer les Erreurs et les Pages 404</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="php">public function indexAction()
+{
+    $product = // récupérer l'objet depuis la base de données
+    if (!$product) {
+        throw $this->createNotFoundException('Le produit n\'existe pas');
+    }
+
+   // ...
+}
 </pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Code Slide (Smaller Font)</h2>
+    <h2>Les Tâches Communes du Contrôleur</h2>
+    <h3>Changer le Content-type de la réponse</h3>
     </hgroup>
-    <article class="smaller">
-      <pre class="prettyprint" data-lang="javascript">
-// Say hello world until the user starts questioning
-// the meaningfulness of their existence.
-function helloWorld(world) {
-  for (var i = 42; --i &gt;= 0;) {
-    alert('Hello ' + String(world));
+    <article>
+        <pre class="prettyprint" data-lang="php">namespace Effor\BlogBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
+
+class BlogController extends Controller
+{
+  public function voirAction($id)
+  {
+    // Créons nous-mêmes la réponse en JSON, grâce à la fonction json_encode()
+    $response = new Response(json_encode(array('id' => $id)));
+
+    // Ici, nous définissons le Content-type pour dire que l'on renvoie du JSON
+    $response->headers->set('Content-Type', 'application/json');
+    return $response;
   }
 }
 </pre>
-<pre class="prettyprint" data-lang="css">
-&lt;style&gt;
-  p { color: pink }
-  b { color: blue }
-&lt;/style&gt;
+    </article>
+  </slide>
+
+  <slide>
+        <hgroup>
+        <h2>Un espace membre avec FOSUserBundle</h2>
+        </hgroup>
+        <article>
+        <a href="https://github.com/FriendsOfSymfony/FOSUserBundle">https://github.com/FriendsOfSymfony/FOSUserBundle</a>
+        <h3>Installation avec composer:</h3>
+        <pre class="prettyprint" data-lang="json">// composer.json
+  "require": {
+    // …
+    "friendsofsymfony/user-bundle": "dev-master"
+  }
 </pre>
-<pre class="prettyprint" data-lang="html">
-&lt;!DOCTYPE html>
-&lt;html>
-&lt;head>
-  &lt;title>My Awesome Page&lt;/title>
-&lt;/head>
-&lt;body>
-  &lt;p&gt;Hello world&lt;/p&gt;
-&lt;body>
-&lt;/html>
+<pre class="prettyprint" data-lang="php">php composer.phar update friendsofsymfony/user-bundle</pre>
+<h3>Le principe: créer un bundle pour gérer nos utilisateurs, <b>EfforUserBundle</b> qui va hériter de <b>FOSUserBundle</b> !</h3>
+   </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>Un espace membre avec FOSUserBundle</h2>
+        <h3>Installation du Bundle</h3>
+        </hgroup>
+        <article>
+        <h3>Activer le bundle:</h3>
+        <pre class="prettyprint" data-lang="php">// app/AppKernel.php
+
+public function registerBundles()
+{
+    $bundles = array(
+        // ...
+        new FOS\UserBundle\FOSUserBundle(),
+    );
+}
 </pre>
-    </article>
-  </slide>
+   </article>
+    </slide>
 
-  <slide>
-    <aside class="note">
-      <section>
+      <slide>
+        <hgroup>
+        <h2>Un espace membre avec FOSUserBundle</h2>
+        <h3>Installation du Bundle</h3>
+        </hgroup>
+        <article>
+        <h3>Hériter le bundle:</h3>
+        <pre class="prettyprint" data-lang="php">// src/Effor/UserBundle/EfforUserBundle.php
+namespace Effor\UserBundle;
+
+use Symfony\Component\HttpKernel\Bundle\Bundle;
+
+class EfforUserBundle extends Bundle
+{
+  public function getParent()
+  {
+    return 'FOSUserBundle';
+  }
+}</pre>
+   </article>
+    </slide>
+
+    <slide>
+        <article>
+        <pre class="prettyprint" data-lang="php">// src/Effor/UserBundle/Entity/User.php
+namespace Effor\UserBundle\Entity;
+use FOS\UserBundle\Entity\User as BaseUser;
+use Doctrine\ORM\Mapping as ORM;
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="fos_user")
+ */
+class User extends BaseUser
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+    public function __construct()
+    {
+        parent::__construct();
+        // your own logic
+    }
+}</pre>
+   </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>La sécurité : authentification et autorisation</h2>
+        </hgroup>
+        <article>
+          <h3>L'<b>authentification</b>: le système cherche à savoir qui vous êtes.</h3>
+          <h3>L'<b>autorisation</b>: le système vérifie si vous avez les privilèges pour exécuter certaines actions.</h3>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>La sécurité : authentification et autorisation</h2>
+        </hgroup>
+        <article>
+          <h3>Cas 1: un anonyme demande une page sans privilège requis</h3>
+          <img src="images/security_anonymous_user_access.png" alt="">
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>La sécurité : authentification et autorisation</h2>
+        </hgroup>
+        <article>
+          <h3>Cas 2: un anonyme demande une page de privilège administrateur</h3>
+          <img src="images/security_anonymous_user_denied_authorization.png" alt="">
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>La sécurité : authentification et autorisation</h2>
+        </hgroup>
+        <article>
+          <h3>Cas 3: un utilisateur demande une page de privilège administrateur</h3>
+          <img src="images/security_ryan_no_role_admin_access.png" alt="">
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>La sécurité : authentification et autorisation</h2>
+        </hgroup>
+        <article>
+          <h3>Cas 4: un administrateur demande une page de privilège administrateur</h3>
+          <img src="images/security_admin_role_access.png" alt="">
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>Configurer la sécurité 1/2</h2>
+        </hgroup>
+        <article>
+        <pre class="prettyprint" data-lang="yml"># app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+    # ...
+</pre>
+   </article>
+    </slide>
+
+        <slide>
+        <hgroup>
+        <h2>Configurer la sécurité 2/2</h2>
+        </hgroup>
+        <article>
+        <pre class="prettyprint" data-lang="yml"># ...
+firewalls:
+        main:
+            pattern: <span class="nocode">^/</span>
+            form_login:
+                provider: fos_userbundle
+                csrf_provider: form.csrf_provider
+            logout:       true
+            anonymous:    true
+
+access_control:
+        - { path: <span class="nocode">^/login$</span>, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: <span class="nocode">^/register</span>, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: <span class="nocode">^/resetting</span>, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: <span class="nocode">^/admin/</span>, role: ROLE_ADMIN }
+</pre>
+   </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>Configurer FOSUserBundle</h2>
+        </hgroup>
+        <article>
+        <pre class="prettyprint" data-lang="yml"># app/config/config.yml
+
+fos_user:
+    db_driver: orm # Le type de BDD à utiliser, ex: 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main # Le nom du firewall duquel on utilisera ces utilisateurs
+    user_class: Effor\UserBundle\Entity\User # La classe de l'entité User</pre>
+    <h3>Traduire les messages:</h3>
+        <pre class="prettyprint"># app/config/config.yml
+
+framework:
+    translator:      { fallback: %locale% }</pre>
+   </article>
+    </slide>
+
+        <slide>
+        <hgroup>
+        <h2>Importer les routes</h2>
+        </hgroup>
+        <article>
+        <pre class="prettyprint" data-lang="yml"># app/config/routing.yml
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_register:
+    resource: "@FOSUserBundle/Resources/config/routing/registration.xml"
+    prefix: /register
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile</pre>
+   </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>Vérifions que tout fonctionne...</h2>
+        </hgroup>
+        <article>
+        <h3>Mettre à jour la BDD</h3>
+        <pre class="prettyprint">php app/console doctrine:database:create
+php app/console doctrine:schema:update --force</pre>
+        <h3>Testons les pages: <b>/register</b>, <b>/login</b>, <b>/resetting/request</b></h3>
+        <br>
+        <p>Il y en a encore beaucoup d'autres:</p>
+        <pre class="prettyprint">php app/console router:debug</pre>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>Quelques commandes utiles du Bundle</h2>
+        </hgroup>
+        <article>
+        <h3>Ajouter un utilisateur</h3>
+        <pre class="prettyprint">php app/console fos:user:create test test@example.com password</pre>
+
+        <h3>Ajouter un utilisateur super administrateur</h3>
+        <pre class="prettyprint">php app/console fos:user:create admin --super-admin</pre>
+
+        <h3>Promouvoir un utilisateur</h3>
+        <pre class="prettyprint">php app/console fos:user:promote test ROLE_ADMIN</pre>
+
+        <h3>Changer le mot de passe d'un utilisateur</h3>
+        <pre class="prettyprint">php app/console fos:user:change-password test newpassword</pre>
+        </article>
+    </slide>
+
+    <slide>
+        <hgroup>
+        <h2>C'est tout ??</h2>
+        <h3>Dans les prochaines parties nous allons voir comment...</h3>
+        </hgroup>
+        <article>
         <ul>
-          <li>Point I wanted to make #1</li>
-          <li>Point I wanted to make #2</li>
-          <li>Point I wanted to make #3</li>
-          <li>Example <a href="#">link</a> in notes.</li>
+          <li><b>Personaliser l'esthétique !</b> Il faut avouer que c'est un peu moche :-(</li>
+          <li><b>Ajouter des champs à nos utilisateurs</b></li>
+          <li><b>Récupérer les utilisateurs et les manipuler !</b></li>
+          <li><b>Modifier les formulaires</b></li>
         </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
+        Il reste d'autres choses... n'hésitez pas à <br> utiliser la <a href="https://github.com/FriendsOfSymfony/FOSUserBundle/blob/master/Resources/doc/index.md">documentation du bundle</a> !
+        <img src="images/488760273_480x480_f.jpg" style="float: right;margin-top:-150px;" alt="">
+        </article>
+    </slide>
+
+  <slide>
     <hgroup>
-      <h2>Slide with Speaker Notes</h2>
+    <h2>Présentation de Twig</h2>
+    <h3>PHP vs Twig</h3>
     </hgroup>
     <article>
-      <p>Press 'p' to toggle speaker notes.</p>
+ <pre class="prettyprint" data-lang="php"><code>&lt;h1&gt;&lt;?php echo $title; ?&gt;&lt;/h1&gt;
+
+   &lt;ul id="nav">
+     &lt;?php foreach ($navigation as $item) { ?&gt;
+       &lt;li&gt;&lt;a href="&lt;?php echo $item->getHref(); ?&gt;">&lt;?php echo $item->getTitre(); ?&gt;&lt;/a&gt;&lt;/li&gt;
+     &lt;?php } ?>
+   &lt;/ul></code></pre>
+
+<pre class="prettyprint" data-lang="twig"><code>&lt;h1&gt;{{ title }}&lt;/h1&gt;
+
+  &lt;ul id="nav"&gt;
+    {% for item in navigation %}
+      &lt;li&gt;&lt;a href="{{ item.href }}"&gt;{{ item.titre }}&lt;/a&gt;&lt;/li&gt;
+    {% endfor %}
+  &lt;/ul&gt;</code></pre>
+
     </article>
   </slide>
 
   <slide>
-    <aside class="note">
-      <section>
-        <ul>
-          <li>See this amazing link: <a href="http://www.google.com">link</a>.</li>
-        </ul>
-        <p><b>Remember to say this tag line!</b></p>
-      </section>
-    </aside>
     <hgroup>
-      <h2>Presenter Mode</h2>
+    <h2>Présentation de Twig</h2>
+    <h3>Syntaxe de base</h3>
     </hgroup>
     <article>
-      <p>Add <code><a href="?presentme=true" target="_self">?presentme=true</a></code> to the URL to enabled presenter mode.
-      This setting is sticky, meaning refreshing the page will persist presenter
-      mode.</p>
-      <p>Hit <code><a href="?presentme=false" target="_self">?presentme=false</a></code> to disable presenter mode.</p>
+   <table>
+        <tr>
+          <th>Description</th><th>Twig</th><th>PHP</th>
+        </tr>
+        <tr>
+          <td>Afficher une variable</v></td><td>Pseudo : {{ pseudo }}</td><td>Pseudo : &lt;?php echo $pseudo; ?></td>
+        </tr>
+        <tr>
+          <td>Afficher l'index d'un tableau</td><td>Identifiant : {{ user['id'] }}</td><td>Identifiant : &lt;?php echo $user['id']; ?></td>
+        </tr>
+        <tr>
+          <td>Afficher l'attribut d'un objet, dont le getter respecte la convention $objet->getAttribut()</td><td>Age : {{ user.age }}</td><td>Age : &lt;?php echo $user->getAge(); ?></td>
+        </tr>
+        <tr>
+          <td>Appliquer un filtre</td><td>Pseudo en majuscules: {{ pseudo|upper }}</td><td>Pseudo en lettre majuscules :  &lt;?php echo strtoupper($pseudo); ?></td>
+        </tr>
+        <tr>
+          <td>Utiliser un filtre avec des arguments</td><td>Date : {{ date|date('d/m/Y') }}</td><td>Date : &lt;?php echo $date->format('d/m/Y'); ?></td>
+        </tr>
+        <tr>
+          <td>Concaténer</td><td>{{ nom ~ " " ~ prenom }}</td><td>&lt;?php echo $nom.' '.$prenom; ?></td>
+        </tr>
+      </table>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Image</h2>
+    <h2>Présentation de Twig</h2>
+    <h3>Filtres utiles</h3>
     </hgroup>
     <article>
-      <img src="images/chart.png" class="reflect" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+   <table>
+        <tr>
+          <th>Filtre</th><th>Description</th><th>Twig</th>
+        </tr>
+        <tr>
+          <td><a href="http://twig.sensiolabs.org/doc/filters/upper.html">Upper</a></v></td><td>Met toutes les lettres en majuscules.</td><td>{{ var|upper }}</td>
+        </tr>
+        <tr>
+          <td><a href="http://twig.sensiolabs.org/doc/filters/striptags.html">Striptags</a></td><td>Supprime toutes les balises XML.</td><td>{{ var|striptags }}</td>
+        </tr>
+        <tr>
+          <td><a href="http://twig.sensiolabs.org/doc/filters/date.html">Date</a></td><td>Formate la date selon le format donné en argument. La variable en entrée doit être une instance de Datetime.</td><td>{{ date|date('d/m/Y') }} <br>
+Date d'aujourd'hui : {{ "now"|date('d/m/Y') }}</td>
+        </tr>
+        <tr>
+          <td><a href="http://twig.sensiolabs.org/doc/filters/format.html">Format</a></td><td>Insère des variables dans un texte, équivalent à printf.</td><td>{{ "Il y a %s pommes et %s poires"|format(153, nb_poires) }}</td>
+        </tr>
+        <tr>
+          <td><a href="http://twig.sensiolabs.org/doc/filters/length.html">Length</a></td><td>DRetourne le nombre d'éléments du tableau, ou le nombre de caractères d'une chaîne.</td><td>Longueur de la variable : {{ texte|length }}
+Nombre d'éléments du tableau : <br>{{ tableau|length }}</td>
+        </tr>
+      </table>
+<a href="http://twig.sensiolabs.org/doc/filters/index.html.">La liste des filtres.</a>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide with Image (Centered horz/vert)</h2>
+    <h2>Présentation de Twig</h2>
     </hgroup>
-    <article class="flexbox vcenter">
-      <img src="images/barchart.png" alt="Description" title="Description">
-      <footer class="source">source: place source info here</footer>
+    <article>
+    <h3>Les conditions</h3>
+    <pre class="prettyprint" data-lang="twig"><code>{% if online > 1 %}
+    Il y a {{ online }} membres en ligne
+{% elseif online == 1 %}
+   // Un seul utilisateur en ligne !
+{% else %}
+   // Aucun utilisateur en ligne... :-(
+{% endif %}</code></pre><h3>Defined</h3>
+<pre class="prettyprint" data-lang="twig"><code>{% if session.pseudo is defined %}
+    Votre pseudo est {{ session.pseudo}} .
+{% endif %}</code></pre>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Table Option A</h2>
-      <h3>Subtitle Placeholder</h3>
+    <h2>Présentation de Twig</h2>
+    </hgroup>
+    <article>
+<h3>Empty</h3>
+<pre class="prettyprint" data-lang="twig"><code>{{% if equipe.volley is empty %}
+    Le match est annulé.
+{% endif %}</code></pre>
+<h3>Boucle for</h3>
+<pre class="prettyprint" data-lang="twig"><code>{% for i in 0..50 %}
+    Ceci est la ligne {{ i }}
+{% enfor %}
+
+{% for lettre in 'a'..'z' %}
+    La lettre {{ letter }} est lettre numéro {{ loop.index }} de l alphabet.
+{% endfor %}
+</code></pre>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+    <h2>Présentation de Twig</h2>
+    </hgroup>
+    <article>
+<h3>Boucle et condition</h3>
+<pre class="prettyprint" data-lang="twig"><code>{% for user in users if user.active %}
+    &lt;li&gt;{{ user.username }}&lt;/li&gt;
+{% else %}
+    &lt;li&gt;No users found&lt;/li&gt;
+{% endfor %}</code></pre>
+<h3>Définir des variables</h3>
+<pre class="prettyprint" data-lang="twig"><code>{% set var = "val" %}
+
+{% set mascotte, os = 'beastie', 'bsd' %}
+</code></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Passer des paramètres à la vue</h2>
+    </hgroup>
+    <article>
+
+    <h3></h3>
+<pre class="prettyprint" data-lang="php"><code>// Depuis un contrôleur
+
+return $this->render('EfforDemoBundle:Demo:index.html.twig', array(
+  'var1' => $var1,
+  'var2' => $var2
+));
+</code></pre>
+
+<h3>La syntaxe à retenir: <b>bundle:controller:template</b></h3>
+<br>
+<ul>
+  <li><b>EfforDemoBundle</b>: le nom du Bundle (src/Effor/DemoBundle)</li>
+  <li><b>Blog</b>: le nom du controller et sous dossier de Ressources/views du bundle</li>
+  <li><b>index.html.twig</b>: le nom du fichier.</li>
+</ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Utiliser des variables globales</h2>
+    <h3>Déjà présentes dans Symfony2</h3>
     </hgroup>
     <article>
       <table>
         <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
+          <th>Variable</th><th>Description</th>
         </tr>
         <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
+          <td>{{ app.request }}</td><td>Le service « request »</td>
         </tr>
         <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+          <td>{{ app.session }}</td><td>Le service « session »</td>
         </tr>
         <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+          <td>{{ app.environment }}</td><td>L'environnement courant : « dev », « prod », et ceux que vous avez définis.</td>
         </tr>
         <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+          <td>{{ app.debug }}</td><td>True si le mode debug est activé, False sinon.</td>
         </tr>
         <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
+          <td>{{ app.security }}</td><td>Le service « security »</td>
+        </tr>
+        <tr>
+          <td>{{ app.user }}</td><td>L'utilisateur courant.</td>
         </tr>
       </table>
     </article>
@@ -326,134 +1397,1046 @@ function helloWorld(world) {
 
   <slide>
     <hgroup>
-      <h2>Table Option A (Smaller Text)</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
-    <article class="smaller">
-      <table>
-        <tr>
-          <th></th><th>Column 1</th><th>Column 2</th><th>Column 3</th><th>Column 4</th>
-        </tr>
-        <tr>
-          <td>Row 1</td><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 2</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 3</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 4</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <td>Row 5</td><td>placeholder</td><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Table Option B</h2>
-      <h3>Subtitle Placeholder</h3>
+    <h2>Utiliser des variables globales</h2>
+    <h3>Ajoutons nos propres variables...</h3>
     </hgroup>
     <article>
-      <table class="rows">
-        <tr>
-          <th>Header 1</th><td>placeholder</td><td class="highlight">placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 2</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 3</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 4</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-        <tr>
-          <th>Header 5</th><td>placeholder</td><td>placeholder</td><td>placeholder</td>
-        </tr>
-      </table>
+    <pre class="prettyprint" data-lang="yml"># app/config/config.yml
+twig:
+    # ...
+    globals:
+        ga_tracking: UA-xxxxx-x
+</pre>
+
+<pre class="prettyprint" data-lang="twig"><p>Le code est : {{ ga_tracking }} </p></pre>
+
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Slide Styles</h2>
+    <h2>Utiliser les routes dans la vue</h2>
     </hgroup>
-    <article class="smaller">
-      <div class="columns-2">
+    <article>
+
+    <h3>Pour une url relative:</h3>
+    <br>
+<pre class="prettyprint" data-lang="twig"><code>{# Dans une vue Twig #}
+
+&lt;a&gt; href="{{ path('blog', { 'page': page }) }}">Lien vers la page d'id {{ page }}&lt;/a>
+</code></pre>
+
+<h3>Pour une url absolue:</h3>
+<br>
+<pre class="prettyprint" data-lang="twig"><code>{# Dans une vue Twig #}
+
+&lt;a&gt; href="{{ url('blog', { 'page': page }) }}">Lien vers la page d'id {{ page }}&lt;/a>
+</code></pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Construire un composant ré-utilisable dans tous les modules</h2>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="twig"><code>{# app/Resources/views/base.html.twig #}
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;&lt;title&gt;{% block title %}Test Application{% endblock %}&lt;/title&gt;&lt;/head&gt;
+    &lt;body&gt;
+        &lt;div id="sidebar"&gt;
+            {% block sidebar %}
+            &lt;ul&gt;
+                &lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+                &lt;li&gt;&lt;a href="/blog"&gt;Blog&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+            {% endblock %}
+        &lt;/div&gt;
+        &lt;div id="content"&gt;
+            {% block body %}{% endblock %}
+        &lt;/div&gt;
+    &lt;/body&gt;&lt;/html&gt;</code></pre>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+    <h2>Construire un composant ré-utilisable dans tous les modules</h2>
+    <h3>L'héritage de template</h3>
+    </hgroup>
+    <article>
+<pre class="prettyprint" data-lang="twig"><code>{# src/Effor/BlogBundle/Resources/views/Blog/index.html.twig #}
+{% extends '::base.html.twig' %}
+
+{% block title %}On avance pas sans EFFOR{% endblock %}
+
+{% block body %}
+    {% for entry in blog_entries %}
+        &lt;h2&gt;{{ entry.title }}&lt;/h2&gt;
+        &lt;p&gt;{{ entry.body }}&lt;/p&gt;
+    {% endfor %}
+{% endblock %}</code></pre>
+    </article>
+  </slide>
+
+
+    <slide>
+    <hgroup>
+    <h2>Construire un composant ré-utilisable dans tous les modules</h2>
+    <h3>L'héritage de template</h3>
+    </hgroup>
+    <article>
+<h3>La clé de l'héritage de template est la balise <b>{% extends %}</b></h3>
+<h3>Plus vous utilisez les balises <b>{% block %}</b> dans les templates, mieux c'est.</h3> <br>
+=> <b>Eviter de dupliquer du contenu</b>
+<br><br>
+Récupérer le contenu d'un bloc d'un template parent :
+<pre class="prettyprint" data-lang="twig"><code>{% block title %}
+    {{ parent() }} - Blog
+{% endblock %}</code></pre>
+Utile pour <b>compléter</b> un titre par exemple !
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Création d'un blog</h3>
+    </hgroup>
+    <article>
+<h3><b>EfforBlogBundle</b>, les fonctionalités attendues:</h3>
+<ul>
+  <li><b>Facile</b>
+    <ul>
+      <li>Création des pages <b>home, contact, about</b></li>
+      <li>Création d'un <b>menu</b> pour relier les pages !</li>
+      <li>La page <b>about</b> doit afficher <b>$name</b> et <b>$slogan</b> qui sont des variables de son contrôleur !</li>
+      <li>La page <b>contact</b> doit afficher <b>$adress</b> qui est également une variable de son contrôleur !</li>
+    </ul>
+  </li>
+  <li><b>Moyen</b>
+    <ul>
+      <li>La page principale doit afficher 3 articles définis dans un tableau (<b>id,title,content</b>)</li>
+      <li>Le titre contient "Le Blog d'EFFOR" suivi du nom de la page courante</li>
+    </ul>
+  </li>
+</ul>
+    </article>
+  </slide>
+
+    <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Création d'un blog</h3>
+    </hgroup>
+    <article>
+<h3><b>EfforBlogBundle</b>, les fonctionalités attendues:</h3>
+<ul>
+  <li><b>Plus difficile...</b>
+    <ul>
+      <li>La <b>page courante</b> est mise en avant dans le menu (surbrillance ou gras)</b></li>
+      <li>Lorsque l'utilisateur n'est <b>pas connecté</b>, afficher un <b>lien d'inscription</b></li>
+      <li>Chaque article possède un lien "en savoir plus" vers la page <b>/article/{id}</b> affichant simplement sont identifiant</li>
+    </ul>
+  </li>
+  <!--<li><b>Twig Master</b>
+  </li>-->
+</ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Personnalisation esthétique de FOSUserBundle</h3>
+    </hgroup>
+    <article>
+    <p><b>EFFORUserBundle</b> héritant de <b>FOSUserBundle</b>, pour modifier les templates par défaut il suffit de:<p>
+    <h3><b>Créer un template avec le même emplacement et le même nom !</b></h3>
+  <br>
+    <p>Par exemple, src/Effor/UserBundle/Resources/views/layout.html.twig prendra le dessus sur FOS/UserBundle/Resources/views/layout.html.twig</p>
+    <div style="text-align:center"><img src="images/Yes-Set.jpg" alt=""></div>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Personnalisation esthétique de FOSUserBundle</h3>
+    </hgroup>
+    <article>
+    <p>Mais parfois cela ne suffit pas...</p>
+    <h3>Exemple: nous voulons un formulaire de login classique sur la page <b>/login</b> et un autre directement dans notre <b>menu</b> !</h3>
+    <h3>Ok, il faut créer un 2ème template... Mais comment l'appeler ?</h3>
+     <div style="text-align:center"><img src="images/cutcaster-photo-800943891-mad-programmer.jpg" alt=""></div>
+    </article>
+  </slide>
+
+   <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Hériter les contrôleurs de FOSUserBundle</h3>
+    </hgroup>
+    <article>
+    <pre class="prettyprint" data-lang="php">namespace Effor\UserBundle\Controller;
+
+use FOS\UserBundle\Controller\RegistrationController as BaseController;
+
+class RegistrationController extends BaseController
+{
+  // redéfinition des méthodes
+}
+    </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+    <h2>Pratique: utilisation des templates</h2>
+    <h3>Personnalisation esthétique de FOSUserBundle</h3>
+    </hgroup>
+    <article>
+    <h3><b>EfforBlogBundle</b>, nouvelles fonctionalités attendues:</h3>
+    <ul>
+      <li><b>Facile</b>
         <ul>
-          <li class="red">class="red"</li>
-          <li class="red2">class="red2"</li>
-          <li class="red3">class="red3"</li>
-          <li class="blue">class="blue"</li>
-          <li class="blue2">class="blue2"</li>
-          <li class="blue3">class="blue3"</li>
-          <li class="green">class="green"</li>
-          <li class="green2">class="green2"</li>
+          <li>Personaliser la page d'inscription et de connexion</li>
+          <li>Afficher les erreurs dans les formulaires en rouge</li>
         </ul>
+      </li>
+      <li><b>Moyen</b>
         <ul>
-          <li class="green3">class="green3"</li>
-          <li class="yellow">class="yellow"</li>
-          <li class="yellow2">class="yellow2"</li>
-          <li class="yellow3">class="yellow3"</li>
-          <li class="gray">class="gray"</li>
-          <li class="gray2">class="gray2"</li>
-          <li class="gray3">class="gray3"</li>
-          <li class="gray4">class="gray4"</li>
+          <li>Lorsque l'utilisateur est connecté afficher son nom et un lien vers son profil et un lien de déconnexion</li>
         </ul>
-      </div>
-      <div class="centered" style="margin-top:2em">
-        I am centered text with a <button>Button</button> and <button disabled>Disabled</button> button.
-      </div>
+      </li>
+      <li><b>Très difficile</b>
+        <ul>
+          <li>Lorsque l'utilisateur n'est pas connecté afficher dans le menu un formulaire de connexion différent de /login</li>
+        </ul>
+      </li>
+    </ul>
     </article>
   </slide>
 
-  <slide class="segue dark nobackground">
-    <aside class="gdbar"><img src="images/google_developers_icon_128.png"></aside>
-    <hgroup class="auto-fadein">
-      <h2>Segue Slide</h2>
-      <h3>Subtitle Placeholder</h3>
-    </hgroup>
+
+
+   <slide>
+      <hgroup>
+      <h2>Présentation de Doctrine</h2><img src="images/doctrineorm.jpg" style="float: right;" alt="">
+      </hgroup>
+      <article>
+      <h3>Définition d'un ORM</h3>
+      <img src="images/doctrine_image_1.png" alt="">
+     <pre class="prettyprint" data-lang="php">$myProduct = new Product();
+
+// On définit les caractéristiques du produit.
+$myProduct->name = 'potion magique';
+$myProduct->auteur = 'inconnu';
+$myProduct->contenu = 'Comment apprendre Symfony en seulement une heure...';</pre>
+ </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image: url(images/sky.jpg)">
-    <hgroup>
-      <h2 class="white">Full Image (with Optional Header)</h2>
-    </hgroup>
-    <footer class="source white">www.flickr.com/photos/25797459@N06/5438799763/</footer>
+       <slide>
+      <hgroup>
+      <h2>Création d'une entité</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">// src/Effor/StoreBundle/Entity/Product.php
+namespace Effor\StoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="product")
+ */
+class Product
+{
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    protected $id;
+
+}</pre>
+ </article>
   </slide>
 
-  <slide class="segue dark quote nobackground">
-    <aside class="gdbar right bottom"><img src="images/google_developers_icon_128.png"></aside>
-    <article class="flexbox vleft auto-fadein">
-      <q>
-        This is an example of quote text.
-      </q>
-      <div class="author">
-        Name<br>
-        Company
-      </div>
-    </article>
+   <slide>
+      <hgroup>
+      <h2>Création d'une entité</h2>
+      <h3>Ajoutons quelques éléments...</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    protected $name;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2)
+     */
+    protected $price;
+
+    /**
+     * @ORM\Column(type="text")
+     */
+    protected $description;</pre>
+ </article>
   </slide>
 
   <slide>
-    <hgroup>
-      <h2>Slide with Iframe</h2>
-    </hgroup>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
+      <hgroup>
+      <h2>Création d'une entité</h2>
+      <h3>Générer les getters et setters</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">php app/console doctrine:generate:entities Effor/StoreBundle/Entity/Product</pre>
+
+      <h3>Vous pouvez également générer toutes les entités connues d'un bundle ou d'un namespace :</h3>
+
+      <pre class="prettyprint" data-lang="php">php app/console doctrine:generate:entities EfforStoreBundle
+php app/console doctrine:generate:entities Effor</pre>
+ </article>
   </slide>
 
   <slide>
-    <article>
-      <iframe data-src="http://www.google.com/doodle4google/history.html"></iframe>
-    </article>
+      <hgroup>
+      <h2>Création d'une entité</h2>
+      <h3>Avec la console</h3>
+      </hgroup>
+      <article>
+      <h3> Encore une fois Symfony utilise la console pour nous simplifier la vie:</h3>
+      <pre class="prettyprint" data-lang="php">php app/console generate:doctrine:entity</pre>
+      <pre class="prettyprint" data-lang="php">php app/console generate:doctrine:entity --entity=EfforBlogBundle:Post</pre>
+      <pre class="prettyprint" data-lang="php">php app/console generate:doctrine:entity --fields="title:string(100) body:text"</pre>
+
+
+ </article>
   </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Créer les Tables et le Schema</h2>
+      </hgroup>
+      <article>
+      <h3>Création de la base de donnée :</h3>
+      <pre class="prettyprint" data-lang="php">php app/console doctrine:database:create</pre>
+      <h3>Création des tables :</h3>
+      <pre class="prettyprint" data-lang="php">php app/console doctrine:schema:create</pre>
+      <h3>Mettre à jour les tables :</h3>
+      <pre class="prettyprint" data-lang="php">php app/console doctrine:schema:update --force</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Attributs par défaut</h2>
+      </hgroup>
+      <article>
+      <h3>On utilise le constructeur :</h3>
+      <pre class="prettyprint" data-lang="php">namespace Effor\BlogBundle\Entity;
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * @ORM\Entity
+ */
+class Article
+{
+  // La définition des attributs…
+  public function __construct()
+  {
+    $this->date = new \Datetime(); // Par défaut, date d'aujourd'hui
+  }
+  // Les getters/setters…
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Pratique: l'entité Article</h2>
+      </hgroup>
+      <article>
+      <h3>Un article est modélisé par :</h3>
+      <ul>
+        <li>Un identifiant unique: <b>id</b></li>
+        <li>Une date de création: <b>date</b> </li>
+        <li>Un titre: <b>title</b></li>
+        <li>Un contenu: <b>content</b></li>
+        <li>Un booléen pour savoir si les commentaires sont ouverts: <b>commentOpen</b></li>
+      </ul>
+      <h3>Et l'auteur ? il s'agit d'une relation nous verrons ça dans la prochaine partie !</h3>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Persister des objets dans la base de données</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">// src/Effor/StoreBundle/Controller/DefaultController.php
+use Effor\StoreBundle\Entity\Product;
+use Symfony\Component\HttpFoundation\Response;
+// ...
+public function createAction()
+{
+    $product = new Product();
+    $product->setName('A Foo Bar');
+    $product->setPrice('19.99');
+    $product->setDescription('Lorem ipsum dolor');
+
+    $em = $this->getDoctrine()->getEntityManager();
+    $em->persist($product);
+    $em->flush();
+
+    return new Response('Produit créé avec id '.$product->getId());
+}</pre>
+ </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Récupérer des objets de la base de données</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">public function showAction($id)
+{
+    $product = $this->getDoctrine()
+        ->getRepository('AcmeStoreBundle:Product')
+        ->find($id);
+
+    if (!$product) {
+        throw $this->createNotFoundException('Produit non trouvé avec id '.$id);
+    }
+
+    // faire quelque chose comme envoyer l'objet $product à un template
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Récupérer des objets de la base de données</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">// requête par clé primaire (souvent "id")
+$product = $repository->find($id);
+
+// Noms de méthodes dynamiques en se basant sur un nom de colonne
+$product = $repository->findOneById($id);
+$product = $repository->findOneByName('foo');
+
+// trouver *tous* les produits
+$products = $repository->findAll();
+
+// trouver un groupe de produits en se basant sur une valeur de colonne
+$products = $repository->findByPrice(19.99);</pre>
+ </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Mettre un objet à jour</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">public function updateAction($id)
+{
+    $em = $this->getDoctrine()->getEntityManager();
+    $product = $em->getRepository('AcmeStoreBundle:Product')->find($id);
+
+    if (!$product) {
+        throw $this->createNotFoundException('No product found for id '.$id);
+    }
+
+    $product->setName('New product name!');
+    $em->flush();
+
+    return $this->redirect($this->generateUrl('homepage'));
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Supprimer un objet</h2>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">$em = $this->getDoctrine()->getEntityManager();
+$em->remove($product);
+$em->flush();</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Requêter des objets avec DQL</h2>
+      </hgroup>
+      <article>
+        <h3>Première solution: le Doctrine Query Language</h3>
+      <pre class="prettyprint" data-lang="php">$em = $this->getDoctrine()->getEntityManager();
+$query = $em->createQuery(
+    'SELECT p FROM AcmeStoreBundle:Product p WHERE p.price > :price ORDER BY p.price ASC'
+)->setParameter('price', '19.99');
+
+$products = $query->getResult();</pre>
+      <pre class="prettyprint" data-lang="php">$product = $query->getSingleResult();</pre>
+      <pre class="prettyprint" data-lang="php">->setParameters(array(
+    'price' => '19.99',
+    'name'  => 'Foo',
+))</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Requêter des objets avec DQL</h2>
+      </hgroup>
+      <article>
+        <h3>Deuxième solution: le constructeur de requêtes de Doctrine</h3>
+      <pre class="prettyprint" data-lang="php">$repository = $this->getDoctrine()
+    ->getRepository('AcmeStoreBundle:Product');
+
+$query = $repository->createQueryBuilder('p')
+    ->where('p.price > :price')
+    ->setParameter('price', '19.99')
+    ->orderBy('p.price', 'ASC')
+    ->getQuery();
+
+$products = $query->getResult();</pre>
+<h3>La liste des méthodes: <a href="http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/query-builder.html">QueryBuilder</a></h3>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Classes de dépôt personnalisées</h2>
+      </hgroup>
+      <article>
+        <h3>Où on place nos requête, dans le contrôleur ? <b> Non ! </b></h3>
+      <pre class="prettyprint" data-lang="php">// src/Effor/StoreBundle/Entity/ProductRepository.php
+namespace Acme\StoreBundle\Entity;
+
+use Doctrine\ORM\EntityRepository;
+
+class ProductRepository extends EntityRepository
+{
+    public function findAllOrderedByName()
+    {
+        return $this->getEntityManager()
+            ->createQuery('SELECT p FROM EfforStoreBundle:Product p ORDER BY p.name ASC')
+            ->getResult();
+    }
+}</pre>
+ </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Classes de dépôt personnalisées</h2>
+      </hgroup>
+      <article>
+        <h3>Ainsi, dans mon contrôleur je n'ai plus qu'à:</h3>
+      <pre class="prettyprint" data-lang="php">// dans un contrôleur
+$em = $this->getDoctrine()->getEntityManager();
+$products = $em->getRepository('EfforStoreBundle:Product')
+            ->findAllOrderedByName();</pre>
+      <h3>Pour utiliser les Repository:</h3>
+      <pre class="prettyprint" data-lang="php">/**
+ * @ORM\Entity(repositoryClass="Effor\StoreBundle\Entity\ProductRepository")
+ */
+class Product
+{
+    //...
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+      <h3>Nous savons désormais utiliser des entités indépendantes...</h3>
+      <h3>...Mais on se retrouve rapidement limité !</h3>
+      <h3>On va apprendre à établir des <b>relations</b>:</h3>
+      <ul>
+        <li>One To One</li>
+        <li>One To Many (et Many To One)</li>
+        <li>Many To Many</li>
+      </ul>
+      <img src="images/bilan-carbone-biere.jpg" style="margin-left: 750px;margin-top:-180px;" alt="">
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3>Nos produits appartiennent tous à exactement une « catégorie »</h3>
+        <div style="text-align:center;"><img src="images/17One-Many.png" alt=""></div>
+
+        <pre class="prettyprint" data-lang="php">php app/console doctrine:generate:entity
+        --entity="EfforStoreBundle:Category" --fields="name:string(255)"</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Métadonnées de mapping de relations</b></h3>
+      <pre class="prettyprint" data-lang="php">// src/Effor/StoreBundle/Entity/Category.php
+use Doctrine\Common\Collections\ArrayCollection;
+
+class Category
+{
+    /**
+     * @ORM\OneToMany(targetEntity="Product", mappedBy="category")
+     */
+    protected $products;
+
+    public function __construct()
+    {
+        $this->products = new ArrayCollection();
+    }
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Métadonnées de mapping de relations</b></h3>
+      <pre class="prettyprint" data-lang="php">// src/Effor/StoreBundle/Entity/Product.php
+ // ...
+
+class Product
+{
+    // ...
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     */
+    protected $category;
+}</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+      <img src="images/doctrine_image_2.png" alt="">
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Sauver les entités associées</b></h3>
+      <pre class="prettyprint" data-lang="php">class DefaultController extends Controller
+{
+    public function createProductAction()
+    {
+        $category = new Category();
+        $category->setName('Main Products');
+        $product = new Product();
+        $product->setName('Foo');
+        $product->setPrice(19.99);
+
+        $product->setCategory($category);
+
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($category);
+        $em->persist($product);
+        $em->flush();
+    }
+}</pre>
+ </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Récupérer des objets associés en « lazy loading »</b></h3>
+      <pre class="prettyprint" data-lang="php">public function showAction($id)
+{
+    $product = $this->getDoctrine()
+        ->getRepository('EfforStoreBundle:Product')
+        ->find($id);
+    $categoryName = $product->getCategory()->getName();
+}
+</pre>
+<pre class="prettyprint" data-lang="php">public function showProductAction($id)
+{
+    $category = $this->getDoctrine()
+        ->getRepository('EfforStoreBundle:Category')
+        ->find($id);
+    $products = $category->getProducts();
+}</pre>
+ </article>
+  </slide>
+
+      <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Faire des jointures avec des enregistrements associés</b></h3>
+      <pre class="prettyprint" data-lang="php">// src/Acme/StoreBundle/Entity/ProductRepository.php
+
+public function findOneByIdJoinedToCategory($id)
+{
+    $query = $this->getEntityManager()
+        ->createQuery('
+            SELECT p, c FROM AcmeStoreBundle:Product p
+            JOIN p.category c
+            WHERE p.id = :id'
+        )->setParameter('id', $id);
+
+    try {
+        return $query->getSingleResult();
+    } catch (\Doctrine\ORM\NoResultException $e) {
+        return null;
+    }
+}
+</pre>
+ </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3>Maintenant, vous pouvez utiliser cette méthode dans votre contrôleur pour requêter un objet Product et sa Category associée avec une seule requête :</h3>
+      <pre class="prettyprint" data-lang="php">public function showAction($id)
+{
+    $product = $this->getDoctrine()
+        ->getRepository('AcmeStoreBundle:Product')
+        ->findOneByIdJoinedToCategory($id);
+
+    $category = $product->getCategory();
+
+    // ...
+}
+</pre>
+ </article>
+  </slide>
+
+      <slide>
+      <hgroup>
+      <h2>Callbacks et cycle de vie</h2>
+      <h3>preRemove, postRemove, prePersist, postPersist, preUpdate, ...</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">/**
+ * @ORM\Entity()
+ * @ORM\HasLifecycleCallbacks()
+ */
+class Product
+{
+
+    // ...
+}
+</pre>
+      <pre class="prettyprint" data-lang="php">/**
+ * @ORM\preUpdate
+ */
+public function setLastUpdateValue()
+{
+    $this->lastUpdate = new \DateTime();
+}
+</pre>
+ </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Relations et associations entre les entités</h2>
+      </hgroup>
+      <article>
+        <h3><b>Métadonnées de mapping de relations</b></h3>
+      <img src="images/doctrine_image_2.png" alt="">
+ </article>
+  </slide>
+
+   <slide>
+      <hgroup>
+      <h2>Générer un contrôleur CRUD</h2>
+      <h3>basé sur une entité Doctrine</h3>
+      </hgroup>
+      <article>
+      <ul>
+        <li>Afficher les enregistrements</li>
+        <li>Afficher un seul enregistrement en se basant sur sa clé primaire</li>
+        <li>Créer un nouvel enregistrement</li>
+        <li>Modifier un enregistrement existant</li>
+        <li>Supprimer un enregistrement existant</li>
+      </ul>
+      <pre class="prettyprint" data-lang="php">php app/console generate:doctrine:crud</pre>
+ </article>
+  </slide>
+
+
+  <slide>
+      <hgroup>
+      <h2>Générer une nouvelle classe de type de formulaire</h2>
+      <h3>basée sur une entité Doctrine</h3>
+      </hgroup>
+      <article>
+      <pre class="prettyprint" data-lang="php">php app/console generate:doctrine:form EfforBlogBundle:Post</pre>
+ </article>
+  </slide>
+
+
+  <slide>
+      <hgroup>
+      <h2>Création  d'un Bundle de Blog</h2>
+      <h3>Les différentes étapes</h3>
+      </hgroup>
+      <article>
+      <ul>
+        <li>Génèrer le Bundle et les Entitées</li>
+        <li>Ajouter les relations entre entitées</li>
+        <li>Ajout des contraintes de validation</li>
+        <li>Création des routes et du CRUD</li>
+        <li>Intégration des pages</li>
+        <li>Phase de tests</li>
+      </ul>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Création  d'un Bundle de Blog</h2>
+      <h3>Génèrer le Bundle et les Entitées</h3>
+      </hgroup>
+      <article>
+      <ul>
+        <h3>Nom du Bundle : EfforBlogBundle</h3>
+        <h3>Définition des besoins</h3>
+        <p>4 Entitées: Post, Comment, Category, Tag.</p>
+      </ul>
+      </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      </hgroup>
+      <article>
+        <h3>Entitée Post</h3>
+        <ul>
+          <li>String (255) : title, slug, contentFormatter</li>
+          <li>Text : content</li>
+          <li>Boolean : enabled, commentsEnabled</li>
+          <li>Datetime : publicationDateStart, createdAt, updatedAt</li>
+          <li>Integer : commentsCount</li>
+        </ul>
+        <h3>Entitée Tag</h3>
+        <ul>
+          <li>String (255) : name, slug</li>
+          <li>Text : content</li>
+          <li>Boolean : enabled</li>
+          <li>Datetime : createdAt, updatedAt</li>
+        </ul>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      </hgroup>
+      <article>
+        <h3>Entitée Comment</h3>
+        <ul>
+          <li>String (255) : name, email, url</li>
+          <li>Text : content</li>
+          <li>Boolean : enabled</li>
+          <li>Datetime : createdAt, updatedAt</li>
+          <li>Integer : status</li>
+        </ul>
+        <h3>Entitée Category</h3>
+        <ul>
+          <li>String (255) : name, slug, description</li>
+          <li>Text : content</li>
+          <li>Boolean : enabled</li>
+          <li>Datetime : createdAt, updatedAt</li>
+          <li>Integer : count</li>
+        </ul>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      <h3>Ajouter les cycles de vies</h3>
+      </hgroup>
+      <article>
+      <ul>
+        <pre class="prettyprint" data-lang="php">* @ORM\HasLifecycleCallbacks()</pre>
+        <pre class="prettyprint" data-lang="php">/**
+* @ORM\prePersist
+*/
+public function prePersist() {
+    if (!$this->getPublicationDateStart()) {
+        $this->setPublicationDateStart(new \DateTime);
+    }
+    $this->setCreatedAt(new \DateTime);
+    $this->setUpdatedAt(new \DateTime);
+}
+/**
+ * @ORM\preUpdate
+ */
+public function preUpdate() { $this->setUpdatedAt(new \DateTime); }
+  </pre>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      <h3>Gestion du slug</h3>
+      </hgroup>
+      <article>
+      <p><b>Solution 1</b> : Ajoutez la fonction suivante dans la classe Tag (par exemple)</p>
+        <pre class="prettyprint" data-lang="php">/**
+* source : http://snipplr.com/view/22741/slugify-a-string-in-php/
+*
+* @static
+*
+* @param string $text
+*
+* @return mixed|string
+*/
+public static function slugify($text)
+{
+  /** ... **/
+}
+  </pre>
+      </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      <h3>Gestion du slug</h3>
+      </hgroup>
+      <article>
+      <h3>Exemples d'utilisation de slugify :</h3>
+      <pre class="prettyprint" data-lang="php">// Tag.php
+public function setName($name)
+{
+    $this->name = $name;
+    $this->setSlug(self::slugify($name));
+}</pre>
+<pre class="prettyprint" data-lang="php">// Pour les autres entités...
+public function setSlug($slug)
+{
+    $this->slug = Tag::slugify($slug);
+}</pre>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Génèrer le Bundle et les Entitées</h2>
+      <h3>Gestion du slug</h3>
+      </hgroup>
+      <article>
+      <p><b>Solution 2</b> : Utiliser StofDoctrineExtensionBundle</p>
+        <pre class="prettyprint" data-lang="php">use Gedmo\Mapping\Annotation as Gedmo;
+
+class Post
+{
+  // …
+
+  /**
+   * @Gedmo\Slug(fields={"title"})
+   * @ORM\Column(length=128, unique=true)
+   */
+  private $slug;
+
+}</pre>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Ajouter les relations entre entitées</h2>
+      </hgroup>
+      <article>
+      <ul>
+        <li>L'auteur d'un article</li>
+        <li>L'article d'un commentaire (jamais null)</li>
+        <li>La ou les catégorie(s) d'un article</li>
+        <li>Le ou les tag(s) d'un article</li>
+        <li>etc ... :)</li>
+      </ul>
+      <h3>A vous de jouer !</h3>
+      </article>
+  </slide>
+
+  <slide>
+      <hgroup>
+      <h2>Ajouter les relations entre entitées</h2>
+      </hgroup>
+      <article>
+        <pre class="prettyprint" data-lang="php">// Post.php
+/**
+ * @ORM\OneToOne(targetEntity="Effor\UserBundle\Entity\User", cascade={"persist"})
+ */
+ private $author;
+
+/**
+ * @ORM\ManyToMany(targetEntity="Category", cascade={"persist"})
+ */
+ private $categories;
+
+ /**
+ * @ORM\ManyToMany(targetEntity="Tag", cascade={"persist"})
+ */
+ private $tags;
+
+/**
+ * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+ */
+ private $comments;</pre>
+      </article>
+  </slide>
+
+    <slide>
+      <hgroup>
+      <h2>Ajouter les relations entre entitées</h2>
+      </hgroup>
+      <article>
+        <pre class="prettyprint" data-lang="php">// Comment.php
+    /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $post;</pre>
+    <h3>C'est tout !!!</h3>
+      </article>
+  </slide>
+
+
+
 
   <slide class="thank-you-slide segue nobackground">
     <aside class="gdbar right"><img src="images/logo.jpg"></aside>
